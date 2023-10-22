@@ -1,0 +1,32 @@
+.nosotros {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width:768px) {
+    .nosotros {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+}
+
+.nosotros__texto {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
+}
+
+@media (min-width:768px) {
+    .nosotros__texto {
+        -webkit-line-clamp: 12;
+    }
+}
+
+@media (min-width:902px) {
+    .nosotros__texto {
+        -webkit-line-clamp: 15;
+    }
+}
