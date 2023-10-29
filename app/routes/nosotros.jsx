@@ -4,18 +4,32 @@ import styles from '../styles/nosotros.css'
 // import imagen from '../../public/img/nosotros.jpg';
 
 export async function loader() {
-  return await getNosotros()
+  const datos = await getNosotros();
+  if (Object.keys(datos).length === 0) {
+    throw new Response('', {
+      status: 404,
+      statusText: 'GuitarLa - URL No encontrada',
+      data: {},
+    })
+  }
+  return datos.data;
 }
 
-
-export function meta() {
-  [
+export function meta({ data }) {
+  if (!data || Object.keys(data).length === 0) {
+    return [
+      {
+        title: 'GuitarLa - ruta no encontrada'
+      }
+    ]
+  }
+  return [
     {
-      title: 'GuitarLa - Nosotros'
+      title: `GuitarLa - ${data.attributes.title}`
     },
     {
       name: 'description',
-      content: 'En GuitarLa nos especializamos en entregar al cliente un producto de calidad y dictar cursos de guitarra para mejorar la fortaleza en la musica'
+      content: `${data.attributes.contenido}`
     },
     // {
     //   rel: 'preload',
@@ -38,7 +52,7 @@ export function links() {
 const Nosotros = () => {
 
   const datos = useLoaderData();
-  const { title, contenido, image } = datos.data.attributes;
+  const { title, contenido, image } = datos.attributes;
 
   return (
     <main className='contenedor'>

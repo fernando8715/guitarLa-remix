@@ -1,13 +1,54 @@
-import { useLoaderData } from '@remix-run/react';
+import { isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
 import { getGuitarra } from '../helpers/getGuitarras.server';
+import { Error } from '../components'
 import styles from '../styles/guitarras.css'
+
+
+export async function loader({ params }) {
+  const { guitarraUrl } = params;
+  const guitarra = await getGuitarra(guitarraUrl);
+
+  if (guitarra.data.length === 0) {
+    throw new Response('', {
+      status: 404,
+      statusText: 'GuitarLa - Guitarra no encontrada',
+      data: {}
+    })
+  }
+
+  return guitarra;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <Error error={error} />
+    );
+  }
+}
+
 
 // el parametro data se obtiene del loader y puede ser utilizado en la funcion meta
 
-export function meta({data}) {
+export function meta({ data }) {
+
+  if (!data || Object.keys(data).length === 0) {
+    return [
+      {
+        title: `GuitarLa - Guitarra no encontrada`,
+      },
+      {
+        name: 'description',
+        content: `contenido no encontradp, verifique la ruta ingresada o de click en el boton para que lo lleve  a la pagina inicial`
+      }
+    ]
+  }
+
   return [
     {
-      title: `GuitarLa - ${data.data[0].attributes.nombre}` 
+      title: `GuitarLa - ${data.data[0].attributes.nombre}`
     },
     {
       name: 'description',
@@ -25,11 +66,6 @@ export function links() {
   ]
 }
 
-export async function loader({ params }) {
-  const { guitarraUrl } = params;
-
-  return await getGuitarra(guitarraUrl);
-}
 
 
 
@@ -52,3 +88,5 @@ const Guitarra = () => {
 }
 
 export default Guitarra
+
+

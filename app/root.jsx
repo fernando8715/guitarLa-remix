@@ -1,15 +1,19 @@
 import {
     Meta,
-    Links, 
+    Links,
     Outlet,
     Scripts,
-    LiveReload
+    LiveReload,
+    useRouteError,
+    isRouteErrorResponse,
+    Link
 } from '@remix-run/react';
-import {Header, Footer} from '~/components';
+import { Header, Footer } from '~/components';
 import styles from '~/styles/index.css'
 
 
-export function meta() {
+export function meta() { 
+
     return [
         {
             title: 'GuitarLa - Remix',
@@ -79,3 +83,45 @@ function Document({ children }) {
         </html>
     )
 }
+
+// Funcion para manejo de errores, se utiliza en todas las paginas a definir pagina error diferente
+
+export function ErrorBoundary() {
+    const error = useRouteError();
+
+    if (isRouteErrorResponse(error)) {
+        return (
+            <Document>
+                <div className='contenedor__error'>
+                    <h2 className='heading' >Oops algo salio mal, ruta no encontrada</h2>
+                    <p className='error'>Status: {error.status}</p>
+                    <p className='errorText'>{error.statusText}</p>
+
+                    <Link className='enlace'>
+                        retornar a la pagina de inicio
+                    </Link>
+
+                </div>
+            </Document>
+        );
+    }
+    
+}
+    // // Don't forget to typecheck with your own logic.
+    // // Any value can be thrown, not just errors!
+    // let errorMessage = "Unknown error";
+    // if (isDefinitelyAnError(error)) {
+    //   errorMessage = error.message;
+    // }
+
+    // return (
+    //   <div>
+    //     <h1>Uh oh ...</h1>
+    //     <p>Something went wrong.</p>
+    //     <pre>{errorMessage}</pre>
+    //   </div>
+    // );
+
+
+
+

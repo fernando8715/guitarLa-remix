@@ -1,0 +1,105 @@
+
+.blogs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+}
+
+@media (min-width:768px) {
+    .blogs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width:992px) {
+    .blogs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.blog {
+    display: grid;
+    justify-items: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    box-shadow: -3px -3px 11px rgb(233, 148, 1, .5),
+        -10px -10px 14px rgb(233, 148, 1, .2),
+        5px 7px 3px rgba(75, 75, 75, 0.2),
+        5px 6px 8px 5px rgba(157, 157, 157, 0.5);
+}
+
+
+.blog .contenido {
+    padding: 1rem;
+}
+
+.blog h3 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.blog .date,
+.date {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.blog .text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+}
+
+/* estylos para la URL de cada blog  */
+
+.contenedor__blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 .5rem;
+    position: relative;
+
+    
+    & .contenido {
+        max-width: 75rem;
+        padding: 2rem 0;
+        white-space: pre-wrap;
+        
+        & h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-align: left;
+        }
+
+        & .date {
+            margin-bottom: 1rem;
+        }
+    }
+
+    & .enlace {
+        padding: 1rem 20%;
+
+    }
+    
+    
+}
+
+@media (min-width:1200px) {
+    .contenedor__blog .enlace {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 1rem;
+        background-color: var(--primary);
+
+        &:hover {
+            background-color: var(--black);
+        }
+    }
+}

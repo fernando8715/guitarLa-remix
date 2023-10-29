@@ -23,6 +23,17 @@
     align-items: center;
     max-width: 70rem;
     margin: 0 auto;
+    padding: 0 1rem;
+    border-radius: 15px;
+    box-shadow: -3px -3px 11px rgb(233, 148, 1, .5),
+        -10px -10px 14px rgb(233, 148, 1, .2),
+        5px 7px 3px rgba(75, 75, 75, 0.2),
+        5px 6px 8px 5px rgba(157, 157, 157, 0.5);
+}
+
+.guitarra img {
+    max-width: 90%;
+    max-height: 90%;
 }
 
 .guitarra__contenido {
@@ -54,7 +65,7 @@
 
 }
 
-.guitarra .enlace {
+.enlace {
     display: block;
     text-decoration: none;
     background-color: var(--black);
@@ -68,7 +79,7 @@
     transition-duration: .3s;
 }
 
-.guitarra .enlace:hover {
+.enlace:hover {
     background-color: var(--primary);
 }
 

@@ -23,10 +23,12 @@
     .nosotros__texto {
         -webkit-line-clamp: 12;
     }
+    
 }
 
 @media (min-width:902px) {
     .nosotros__texto {
         -webkit-line-clamp: 15;
     }
+
 }

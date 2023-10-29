@@ -19,8 +19,8 @@ export const Navegacion = () => {
                 className={location.pathname === '/tienda' ? 'active' : ''}
             >Tienda</Link>
             <Link
-                to='/blog'
-                className={location.pathname === '/blog' ? 'active' : ''}
+                to='/blogs'
+                className={location.pathname === '/blogs' ? 'active' : ''}
             >Blog</Link>
         </nav>
 
