@@ -1,4 +1,5 @@
-# Welcome to Remix!
+# --- realizar el cambo de rutas y organizarlas en carpetas ----
+# --- trabajar en la ramaAlterna antes de hacer un merge ----
 
 - [Remix Docs](https://remix.run/docs)
 
