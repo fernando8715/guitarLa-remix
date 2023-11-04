@@ -1,6 +1,4 @@
-import { useLoaderData } from "react-router";
-import { getBlogs } from "../helpers/getBlog.server"
-import { ListadoBlogs } from '../components'
+import { Outlet } from "@remix-run/react";
 import styles from '../styles/blog.css'
 
 export function links() {
@@ -13,19 +11,13 @@ export function links() {
 }
 
 
-export async function loader() {
-  const blog = await getBlogs();
-  return blog.data
-}
-
 const Blogs = () => {
 
-  const blogs = useLoaderData();
 
   return (
 
-    <main className="contenedor">
-      <ListadoBlogs blogs={blogs}/>
+    <main className="contenedor__blog">
+      <Outlet />
     </main>
   )
 }

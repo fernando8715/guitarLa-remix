@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from '@remix-run/react';
-import styles from '../styles/blog.css'
 import { getBlog } from '../helpers/getBlog.server'
 
 export function meta({ data }) {
@@ -11,16 +10,6 @@ export function meta({ data }) {
     {
       name: `${data.data[0].attributes.title}`,
     }
-  ]
-}
-
-export function links() {
-  return [
-    {
-      rel: 'stylesheet',
-      href: styles,
-    }
-
   ]
 }
 
@@ -38,7 +27,7 @@ const BlogUrl = () => {
 
 
   return (
-    <main className='contenedor__blog'>
+    <>
       <img src={image.data.attributes.formats.medium.url} alt={`Información detallada de ${title}`} />
       <div className='contenido'>
         <h3>{title}</h3>
@@ -46,7 +35,7 @@ const BlogUrl = () => {
         <p>{description}</p>
       </div>
       <Link className='enlace' to='/blogs'>Regresar</Link>
-    </main>
+    </>
   )
 }
 

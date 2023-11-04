@@ -75,7 +75,7 @@ const Guitarra = () => {
   const { nombre, description, image, precio, updateAt } = datos.data[0].attributes;
 
   return (
-    <main className='guitarra__grid'>
+    <div className='guitarra__grid'>
       <img className='guitarra__imagen' src={image.data.attributes.formats.medium.url} alt="Imagen de la guitarra ${nombre}" />
       <div className='contenido'>
         <h3 className='guitarra__heading'>{nombre}</h3>
@@ -83,7 +83,7 @@ const Guitarra = () => {
         <strong className='precio'>${precio}</strong>
         <p>{updateAt}</p>
       </div>
-    </main>
+    </div>
   )
 }
 

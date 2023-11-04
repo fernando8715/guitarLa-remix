@@ -25,10 +25,8 @@ const Tienda = () => {
   const guitarras = useLoaderData();
 
   return (
-    <main className='contenedor'>
       <ListadoGuitarras 
         guitarras={guitarras} />
-    </main>
   )
 }
 
