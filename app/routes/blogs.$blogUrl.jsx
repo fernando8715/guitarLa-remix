@@ -34,7 +34,7 @@ const BlogUrl = () => {
         <strong className='date'>Actualizado: {date}</strong>
         <p>{description}</p>
       </div>
-      <Link className='enlace' to='/blogs'>Regresar</Link>
+      <Link className='enlace__regresar' to='/blogs'>Regresar</Link>
     </>
   )
 }

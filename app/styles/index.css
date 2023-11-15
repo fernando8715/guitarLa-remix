@@ -33,7 +33,7 @@ img {
 
 [class*="contenedor"],
 main {
-  width: min(90%, 120rem);
+  width: min(95%, 120rem);
   margin: 3rem auto;
 }
 
@@ -101,6 +101,9 @@ main {
   background-color: var(--primary);
 }
 
+.header .navegacion img {
+  width: 3rem;
+}
 
 /*** Footer ***/
 
@@ -145,6 +148,10 @@ main {
     flex-direction: row;
   }
 
+}
+
+.footer .navegacion a:last-of-type {
+  display: none;
 }
 
 .footer .copyRight {

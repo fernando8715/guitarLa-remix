@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
 import { getGuitarra } from '../helpers/getGuitarras.server';
-import { Error } from '../components'
-import styles from '../styles/guitarras.css'
+import { Error } from '../components';
+import styles from '../styles/guitarras.css';
 
 
 export async function loader({ params }) {
@@ -71,17 +72,48 @@ export function links() {
 
 const Guitarra = () => {
 
+  const [cantidad, setCantidad] = useState(0);
   const datos = useLoaderData();
-  const { nombre, description, image, precio, updateAt } = datos.data[0].attributes;
+  const { nombre, description, image, precio } = datos.data[0].attributes;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const productoSeleccionado = {
+      id: datos.data[0].id,
+      nombre,
+      precio,
+      image: image.data.attributes.formats.small.url,
+      cantidad,
+    }
+    console.log(productoSeleccionado);
+    return productoSeleccionado;
+  }
 
   return (
     <div className='guitarra__grid'>
       <img className='guitarra__imagen' src={image.data.attributes.formats.medium.url} alt="Imagen de la guitarra ${nombre}" />
-      <div className='contenido'>
+      <div className='guitarra__contenido'>
         <h3 className='guitarra__heading'>{nombre}</h3>
         <p className='texto'>{description}</p>
         <strong className='precio'>${precio}</strong>
-        <p>{updateAt}</p>
+
+        <form
+          onSubmit={handleSubmit}
+          className='formulario'>
+          <label htmlFor="cantidad">Cantidad</label>
+          <select
+            onChange={e => setCantidad(parseInt(e.target.value))}
+            id="cantidad">
+            <option disabled>-- Seleccione --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <input type="submit" value="agregar al carrito" className='enlace' />
+        </form>
       </div>
     </div>
   )

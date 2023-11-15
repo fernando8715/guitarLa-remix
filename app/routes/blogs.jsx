@@ -13,7 +13,6 @@ export function links() {
 
 const Blogs = () => {
 
-
   return (
 
     <main className="contenedor__blog">

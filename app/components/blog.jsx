@@ -12,7 +12,7 @@ export const Blog = ({ blog }) => {
         <strong className='date'>Actualizado: {date}</strong>
         <p className="text">{description}</p>
       </div>
-      <Link className='enlace' to={`/blog/${url}`}> Ver mas información</Link>
+        <Link className='enlace' to={`/blogs/${url}`}> Ver mas información</Link>
 
     </article>
   )

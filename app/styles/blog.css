@@ -28,6 +28,7 @@
         -10px -10px 14px rgb(233, 148, 1, .2),
         5px 7px 3px rgba(75, 75, 75, 0.2),
         5px 6px 8px 5px rgba(157, 157, 157, 0.5);
+        align-items: center;
 }
 
 
@@ -90,8 +91,9 @@
     
 }
 
-@media (min-width:1200px) {
-    .contenedor__blog .enlace {
+
+@media (min-width:992px) {
+    .contenedor__blog .enlace__regresar {
         position: absolute;
         top: 0;
         right: 10px;
