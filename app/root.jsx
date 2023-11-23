@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
     Meta,
     Links,
@@ -12,7 +13,7 @@ import { Header, Footer } from '~/components';
 import styles from '~/styles/index.css'
 
 
-export function meta() { 
+export function meta() {
 
     return [
         {
@@ -55,11 +56,53 @@ export function links() {
 
 
 export default function App() {
+
+    const [carrito, setCarrito] = useState([]);
+
+
+
+    const agregarCarrito = guitarra => {
+
+        if (carrito.some(guitarraState => guitarraState.id === guitarra.id)) {
+            // actualizar el carrito con el producto modificado
+            const carritoActualizado = carrito.map(guitarraState => {
+                if (guitarraState.id === guitarra.id) {
+                    guitarraState.cantidad = guitarra.cantidad
+                }
+                return guitarraState;
+            })
+            return setCarrito(carritoActualizado);
+        }
+        // nuevo registro
+        setCarrito([...carrito, guitarra]);
+    }
+
+    const actualizarCantidad = guitarra => {
+        // funcionalidad modifica cantidad articulos en carrito
+        const actualizarCarrito = carrito.map(guitarraState => {
+            if (guitarraState.id === guitarra.id) {
+                guitarraState.cantidad = guitarra.cantidad;
+            }
+            return guitarraState
+        })
+        setCarrito(actualizarCarrito);
+    }
+
+    const handleEliminarProducto = (guitarraId) => {
+        // funcionalidad boton eliminar producto del carrito
+        const actualizarCarrito = carrito.filter(guitarraState => guitarraState.id !== guitarraId);
+        setCarrito(actualizarCarrito);
+    }
+
     return (
         <Document>
-            <Header />
-            <Outlet />
-            <Footer />
+            <Outlet
+                context={{
+                    carrito,
+                    agregarCarrito,
+                    actualizarCantidad,
+                    handleEliminarProducto,
+                }} />
         </Document>
     )
 }
@@ -75,8 +118,9 @@ function Document({ children }) {
                 <Links />
             </head>
             <body>
+                <Header />
                 {children}
-
+                <Footer />
                 <Scripts />
                 <LiveReload /> {/* evita el renderizado del nav */}
             </body>
@@ -105,22 +149,22 @@ export function ErrorBoundary() {
             </Document>
         );
     }
-    
-}
-    // // Don't forget to typecheck with your own logic.
-    // // Any value can be thrown, not just errors!
-    // let errorMessage = "Unknown error";
-    // if (isDefinitelyAnError(error)) {
-    //   errorMessage = error.message;
-    // }
 
-    // return (
-    //   <div>
-    //     <h1>Uh oh ...</h1>
-    //     <p>Something went wrong.</p>
-    //     <pre>{errorMessage}</pre>
-    //   </div>
-    // );
+}
+// // Don't forget to typecheck with your own logic.
+// // Any value can be thrown, not just errors!
+// let errorMessage = "Unknown error";
+// if (isDefinitelyAnError(error)) {
+//   errorMessage = error.message;
+// }
+
+// return (
+//   <div>
+//     <h1>Uh oh ...</h1>
+//     <p>Something went wrong.</p>
+//     <pre>{errorMessage}</pre>
+//   </div>
+// );
 
 
 

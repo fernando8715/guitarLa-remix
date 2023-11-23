@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { isRouteErrorResponse, useLoaderData, useRouteError } from '@remix-run/react';
+import { isRouteErrorResponse, useLoaderData, useOutletContext, useRouteError } from '@remix-run/react';
 import { getGuitarra } from '../helpers/getGuitarras.server';
 import { Error } from '../components';
 import styles from '../styles/guitarras.css';
@@ -72,7 +72,8 @@ export function links() {
 
 const Guitarra = () => {
 
-  const [cantidad, setCantidad] = useState(0);
+  const { agregarCarrito } = useOutletContext();
+  const [cantidad, setCantidad] = useState(1);
   const datos = useLoaderData();
   const { nombre, description, image, precio } = datos.data[0].attributes;
 
@@ -86,7 +87,9 @@ const Guitarra = () => {
       image: image.data.attributes.formats.small.url,
       cantidad,
     }
-    console.log(productoSeleccionado);
+
+    agregarCarrito(productoSeleccionado);
+
     return productoSeleccionado;
   }
 

@@ -118,7 +118,7 @@
     }
 
     & .texto,
-    .precio {
+    & .precio {
         padding: 0 1rem;
 
         @media (min-width:768px) {

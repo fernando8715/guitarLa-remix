@@ -1,20 +1,105 @@
 .carrito__grid {
     display: grid;
     gap: 5rem;
+    align-items: flex-start;
 
     @media (min-width:768px) {
-            grid-template-columns: 3fr 2fr;
-    
+        grid-template-columns: 3fr 2fr;
+
     }
-    
+
     & .carrito {
         padding: 3rem;
     }
 
+    & .listaCarrito {
+        padding: 0;
+
+        & .producto {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 4rem;
+            align-items: center;
+            border-bottom: 1.3px solid #dbdada;
+            margin-top: 2rem;
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+
+        }
+
+        & .infoProducto {
+            font-size: 2rem;
+            position: relative;
+
+            & .infoProducto__nombre {
+                font-weight: 900;
+                font-size: 2.3rem;
+                color: var(--primary);
+            }
+
+            & .select {
+                all: unset;
+                border: 1px solid #cecdcd;
+                border-radius: 5px;
+                width: 30%;
+                text-align: center;
+                margin-left: .5rem;
+                font-weight: 700;
+
+                @media (min-width:992px) {
+                    width: 17%;
+                }
+            }
+
+            & .btnEliminar {
+                all: unset;
+                border-radius: 5px;
+                background-color: darkred;
+                color: var(--white);
+                font-weight: normal;
+                padding: .2rem .8rem;
+                position: absolute;
+                top: 0px;
+                right: -20px;
+                
+                @media (min-width:768px) {
+                    right: 10%;
+
+                    @media (min-width:1200px) {
+                        right: 30%;
+                    }
+                }
+
+            }
+
+
+            & .infoProducto__subtotal {
+                font-weight: 700;
+
+                & span {
+                    font-weight: 900;
+                }
+            }
+
+        }
+    }
+
     & .resumen {
-        background-color: #e6e6e6;
+        background-color: #f4f3f3;
         padding: 3rem;
         border-radius: 1rem;
+        position: sticky;
+        top: 3rem;
+
+        & .total {
+            font-weight: 700;
+            color: var(--primary);
+
+            & span {
+                color: var(--black);
+            }
+        }
     }
 }
-
