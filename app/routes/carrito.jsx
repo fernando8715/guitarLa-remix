@@ -44,7 +44,7 @@ const Carrito = () => {
           <h2>Articulos</h2>
           <ul className='listaCarrito'>
             {carrito?.length === 0 ? 'Carrito vacio' : (
-              carrito.map(producto => (
+              carrito?.map(producto => (
                 <li key={producto.id} className='producto'>
                   <img src={producto.image} alt={`guitarra ${producto.nombre}`} />
                   <div className="infoProducto">
@@ -83,7 +83,7 @@ const Carrito = () => {
 
         <aside className="resumen" >
           <h3>Resumen de pedido</h3>
-          <p className='total'>Total a pagar: <span>${total}</span></p>
+          <p className='total'>Total a pagar: <span>${parseInt(total)}</span></p>
         </aside>
 
       </div>
