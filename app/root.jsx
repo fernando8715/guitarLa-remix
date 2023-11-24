@@ -11,6 +11,7 @@ import {
 } from '@remix-run/react';
 import { Header, Footer } from '~/components';
 import styles from '~/styles/index.css'
+import icono from '../public/antal-29697.svg';
 
 
 export function meta() {
@@ -50,6 +51,11 @@ export function links() {
         {
             rel: 'stylesheet',
             href: styles
+        },
+        {
+            rel: 'icon',
+            href: icono,
+            type: 'image/x-icon'
         }
     ]
 }
