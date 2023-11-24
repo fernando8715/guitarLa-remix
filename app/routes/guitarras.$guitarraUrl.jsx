@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { isRouteErrorResponse, useLoaderData, useOutletContext, useRouteError } from '@remix-run/react';
+import { isRouteErrorResponse, useLoaderData, useOutletContext, useRouteError, Link } from '@remix-run/react';
 import { getGuitarra } from '../helpers/getGuitarras.server';
 import { Error } from '../components';
 import styles from '../styles/guitarras.css';
@@ -116,6 +116,7 @@ const Guitarra = () => {
             <option value="5">5</option>
           </select>
           <input type="submit" value="agregar al carrito" className='enlace' />
+          <Link to={'/guitarras'}>Regresar a tienda</Link>
         </form>
       </div>
     </div>

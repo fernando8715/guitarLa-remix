@@ -29,6 +29,8 @@
         5px 7px 3px rgba(75, 75, 75, 0.2),
         5px 6px 8px 5px rgba(157, 157, 157, 0.5);
         align-items: center;
+
+    
 }
 
 
@@ -98,10 +100,5 @@
         top: 0;
         right: 10px;
         padding: 1rem;
-        background-color: var(--primary);
-
-        &:hover {
-            background-color: var(--black);
-        }
     }
 }

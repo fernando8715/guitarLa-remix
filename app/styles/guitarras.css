@@ -149,6 +149,10 @@
             margin-top: 2rem;
             cursor: pointer;
         }
+
+        & a {
+            text-align: center;
+        }
     }
 }
 
